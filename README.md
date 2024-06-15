@@ -2,7 +2,7 @@
 Python3 script to parse CSV output files from [testssl.sh](https://github.com/drwetter/testssl.sh). 
 ## Setup 
 1. Download `testssl-parser.py` and place it wherever you keep your scripts.
-2. **OPTIONAL:** add an alias into your `~/.zshrc`/`~/.bashrc` file: `alias parse-testssl={path-to-file}/testssl-parser.sh`
+2. **OPTIONAL:** add an alias into your `~/.zshrc` or `~/.bashrc` file: `alias parse-testssl={path-to-file}/testssl-parser.sh`
 ## Usage
 After downloading the script, it can be ran using `python3` via the command line and providing the `.csv` file as an argument:
 
