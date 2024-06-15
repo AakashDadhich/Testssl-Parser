@@ -50,7 +50,7 @@ for issue in issuesList:
     for row in fileContents:
         if issue in row:
             # Store in format: "IP:port - finding"
-            outputFile.write("".join((row[1].split("/"))[:1]) + ":" + row[2] + " - " + row[4] + "\n")
+            outputFile.write("\t" + "".join((row[1].split("/"))[:1]) + ":" + row[2] + " - " + row[4] + "\n")
     outputFile.write("\n")
 
 # Close output file
