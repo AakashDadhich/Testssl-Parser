@@ -1,11 +1,20 @@
+# Parse testssl.sh CSV output files into a user-friendly file that organises affected IPs by issue! 
+# Works best for scanning many hosts into one CSV file. 
+
+# Version Number: v1.0
+# Author: Aakash Dadhich
+
+# Usage: 
+# python3 testssl-parser.py {path-to-file}.csv 
+
 # Import sys for accessing command line interface (CLI) arguments
 import sys
-# Import csv for parsing csv files
+# Import csv for parsing CSV files
 import csv
 # Set filename to CSV file passed via CLI argument 
 filename = sys.argv[1]
 
-# Initialise fieldName and rows lists
+# Initialise lists
 fieldNames = []
 fileContents = []
 issuesList = []
@@ -40,16 +49,18 @@ for issue in issuesList:
     # Iterate through parsed CSV contents
     for row in fileContents:
         if issue in row:
-            # Print IP:port - finding
+            # Store in format: "IP:port - finding"
             outputFile.write("".join((row[1].split("/"))[:1]) + ":" + row[2] + " - " + row[4] + "\n")
     outputFile.write("\n")
 
 # Close output file
 outputFile.close()
 # Print notification to console
-print("Successfully parsed, please see parsed-testssl.txt")
+print("Successfully parsed; output stored in parsed-testssl.txt")
 
 # Print parsed info for debug
+
 #print("Field names: " + " | ".join(fieldNames))
+
 #for line in fileContents:
 #    print(line)
