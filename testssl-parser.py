@@ -30,19 +30,26 @@ with open(filename, "r") as csvFile:
             if (row[0] not in issuesList):
                 issuesList.append(row[0])
                     
-# Print affected IP:port by issue
+# Create writable output file
+outputFile = open("parsed-testssl.txt", "w")
+outputFile.write("Parsed from " + filename + "\n\n")
+
 # Iterate through list of unique issues
 for issue in issuesList:
-    print(issue)
+    outputFile.write(issue + "\n")
     # Iterate through parsed CSV contents
     for row in fileContents:
         if issue in row:
             # Print IP:port - finding
-            print("".join((row[1].split("/"))[:1]) + ":" + row[2] + " - " + row[4])
-    print("\n")
-    
+            outputFile.write("".join((row[1].split("/"))[:1]) + ":" + row[2] + " - " + row[4] + "\n")
+    outputFile.write("\n")
+
+# Close output file
+outputFile.close()
+# Print notification to console
+print("Successfully parsed, please see parsed-testssl.txt")
+
 # Print parsed info for debug
-#print("Input file: " + filename + "\n\n")
 #print("Field names: " + " | ".join(fieldNames))
 #for line in fileContents:
 #    print(line)
